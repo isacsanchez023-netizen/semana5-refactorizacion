@@ -13,10 +13,8 @@ public class ServicioReservas {
             return;
         }
 
-        // Se reemplaza la impresión directa por la llamada al nuevo método
-        mostrarResumen(reserva);
-        reserva.confirmar();
-        System.out.println("Reserva confirmada");
+        // Delegación de la fase final a una operación de alto nivel
+        ejecutarConfirmacion(reserva);
     }
 
     private boolean esReservaValida(Reserva reserva) {
@@ -26,7 +24,12 @@ public class ServicioReservas {
                 && !reserva.isCancelada();
     }
 
-    // Método extraído para aislar la responsabilidad de presentación
+    private void ejecutarConfirmacion(Reserva reserva) {
+        mostrarResumen(reserva);
+        reserva.confirmar();
+        System.out.println("Reserva confirmada");
+    }
+
     private void mostrarResumen(Reserva reserva) {
         System.out.println("Procesando...");
         System.out.println("Reserva: " + reserva.getId());
