@@ -1,8 +1,10 @@
 package edu.uees.disenosoftware.app;
+
 import edu.uees.disenosoftware.domain.Docente;
 import edu.uees.disenosoftware.domain.Estudiante;
 import edu.uees.disenosoftware.domain.Reserva;
 import edu.uees.disenosoftware.service.ServicioReservas;
+
 public class Main {
     public static void main(String[] args) {
         Estudiante estudiante = new Estudiante(
@@ -18,9 +20,11 @@ public class Main {
                 estudiante,
                 docente
         );
-        ServicioReservas servicio =
-                new ServicioReservas();
-        servicio.proc(reserva, 4);
+        ServicioReservas servicio = new ServicioReservas();
+
+        // Llamada actualizada con el nuevo nombre
+        servicio.confirmarReserva(reserva, 4);
+
         System.out.println(
                 "Estado final: " + reserva.getEstado()
         );
